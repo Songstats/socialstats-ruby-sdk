@@ -1,0 +1,27 @@
+# frozen_string_literal: true
+
+module SocialstatsSDK
+  class Client
+    attr_reader :info, :creators, :posts
+
+    def initialize(api_key:, base_url: HTTPClient::DEFAULT_BASE_URL, timeout: HTTPClient::DEFAULT_TIMEOUT_SECONDS,
+      max_retries: 2, http_adapter: nil, user_agent: nil)
+      @http = HTTPClient.new(
+        api_key: api_key,
+        base_url: base_url,
+        timeout: timeout,
+        max_retries: max_retries,
+        adapter: http_adapter,
+        user_agent: user_agent
+      )
+
+      @info = Resources::Info.new(@http)
+      @creators = Resources::Creators.new(@http)
+      @posts = Resources::Posts.new(@http)
+    end
+
+    def close
+      @http.close
+    end
+  end
+end
