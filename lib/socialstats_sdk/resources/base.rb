@@ -22,9 +22,7 @@ module SocialstatsSDK
       end
 
       def normalize_params(params)
-        # rubocop:disable Rails/Blank
-        return nil if params.respond_to?(:blank?) ? params.blank? : (params.nil? || params.empty?)
-        # rubocop:enable Rails/Blank
+        return nil if params.blank?
 
         normalized = {}
         params.each do |key, value|
