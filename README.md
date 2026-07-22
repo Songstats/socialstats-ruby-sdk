@@ -3,7 +3,7 @@
 Official Ruby client for the **Socialstats Enterprise API**.
 
 RubyGems: https://rubygems.org/gems/socialstats-ruby-sdk  
-API Documentation: https://docs.socialstats.com  
+API Documentation: https://developers.stats.company/socialstats<br>
 API Key Access: Please contact api@socialstats.com
 
 ---
