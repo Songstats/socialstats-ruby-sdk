@@ -37,6 +37,22 @@ module SocialstatsSDK
         get("creators/content", params: with_identifier(params))
       end
 
+      def authorized_stats(**params)
+        get("creators/authorized/stats", params: with_identifier(params))
+      end
+
+      def authorized_historic_stats(**params)
+        get("creators/authorized/historic_stats", params: with_identifier(params))
+      end
+
+      def authorized_audience(**params)
+        get("creators/authorized/audience", params: with_identifier(params))
+      end
+
+      def authorized_content(**params)
+        get("creators/authorized/content", params: with_identifier(params))
+      end
+
       def top_posts(**params)
         get("creators/top_posts", params: with_identifier(params))
       end

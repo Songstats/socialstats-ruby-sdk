@@ -59,6 +59,14 @@ Or install directly via RubyGems:
       post_id: "7654234001833610518"
     )
 
+    # Start and poll a creator authorization
+    authorization = client.oauth.create(
+      socialstats_creator_id: "d3rvjgk2",
+      source_id: "youtube",
+      return_url: "https://customer.example.com/socialstats/oauth-return"
+    )
+    authorization_status = client.oauth.attempt_status(authorization["state_token"])
+
 ---
 
 ## Authentication
@@ -78,10 +86,12 @@ We recommend storing your key securely in environment variables:
 - `client.info`
 - `client.creators`
 - `client.posts`
+- `client.oauth`
 
 Info endpoints:
 - `client.info.sources` -> `/sources`
 - `client.info.status` -> `/status`
+- `client.info.uptime_check` -> `/uptime_check`
 - `client.info.definitions` -> `/definitions`
 
 Creator endpoints:
@@ -92,6 +102,10 @@ Creator endpoints:
 - `client.creators.audience_details(country_code: ..., ...)` -> `/creators/audience/details`
 - `client.creators.activities(...)` -> `/creators/activities`
 - `client.creators.content(...)` -> `/creators/content`
+- `client.creators.authorized_stats(...)` -> `/creators/authorized/stats`
+- `client.creators.authorized_historic_stats(...)` -> `/creators/authorized/historic_stats`
+- `client.creators.authorized_audience(...)` -> `/creators/authorized/audience`
+- `client.creators.authorized_content(...)` -> `/creators/authorized/content`
 - `client.creators.top_posts(...)` -> `/creators/top_posts`
 - `client.creators.search(q: ..., ...)` -> `/creators/search`
 - `client.creators.add_link_request(link: ..., ...)` -> `/creators/link_request`
@@ -100,6 +114,15 @@ Creator endpoints:
 Post endpoints:
 - `client.posts.stats(...)` -> `/posts/stats`
 - `client.posts.historic_stats(...)` -> `/posts/historic_stats`
+- `client.posts.authorized_stats(...)` -> `/posts/authorized/{source_id}/stats`
+- `client.posts.authorized_historic_stats(...)` -> `/posts/authorized/{source_id}/historic_stats`
+
+OAuth endpoints:
+- `client.oauth.create(...)` -> `POST /oauth`
+- `client.oauth.list(...)` -> `GET /oauth`
+- `client.oauth.get(...)` -> `GET /oauth/{id}`
+- `client.oauth.revoke(...)` -> `DELETE /oauth/{id}`
+- `client.oauth.attempt_status(...)` -> `GET /oauth-attempts/{state_token}`
 
 ---
 

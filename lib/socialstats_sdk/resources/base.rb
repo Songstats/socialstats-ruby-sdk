@@ -12,6 +12,7 @@ module SocialstatsSDK
       def get(path, params: nil)
         @http.request(:get, path, params: normalize_params(params))
       end
+      alias request_get get
 
       def post(path, params: nil, json: nil)
         @http.request(:post, path, params: normalize_params(params), json: normalize_params(json))

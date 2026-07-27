@@ -30,6 +30,10 @@ Authentication observed in Rails: `apikey` request header.
 | GET    | `/audience/details` | `client.creators.audience_details(country_code: ..., ...)` |
 | GET    | `/activities`       | `client.creators.activities(...)`                          |
 | GET    | `/content`          | `client.creators.content(...)`                             |
+| GET    | `/authorized/stats` | `client.creators.authorized_stats(...)`                    |
+| GET    | `/authorized/historic_stats` | `client.creators.authorized_historic_stats(...)`    |
+| GET    | `/authorized/audience` | `client.creators.authorized_audience(...)`              |
+| GET    | `/authorized/content` | `client.creators.authorized_content(...)`                |
 | GET    | `/top_posts`        | `client.creators.top_posts(...)`                           |
 | GET    | `/search`           | `client.creators.search(q: ..., ...)`                      |
 | POST   | `/link_request`     | `client.creators.add_link_request(link: ..., ...)`         |
@@ -41,3 +45,15 @@ Authentication observed in Rails: `apikey` request header.
 | ---- | ----------------- | ---------------------------------- |
 | GET  | `/stats`          | `client.posts.stats(...)`          |
 | GET  | `/historic_stats` | `client.posts.historic_stats(...)` |
+| GET  | `/authorized/:source_id/stats` | `client.posts.authorized_stats(...)` |
+| GET  | `/authorized/:source_id/historic_stats` | `client.posts.authorized_historic_stats(...)` |
+
+## `/enterprise/v1/oauth`
+
+| HTTP   | Route                          | SDK Method                                  |
+| ------ | ------------------------------ | ------------------------------------------- |
+| POST   | `/oauth`                       | `client.oauth.create(...)`                  |
+| GET    | `/oauth`                       | `client.oauth.list(...)`                    |
+| GET    | `/oauth/:id`                   | `client.oauth.get(id)`                      |
+| DELETE | `/oauth/:id`                   | `client.oauth.revoke(id)`                   |
+| GET    | `/oauth-attempts/:state_token` | `client.oauth.attempt_status(state_token)`  |

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "uri"
+
 module SocialstatsSDK
   module Resources
     class Posts < Base
@@ -12,6 +14,16 @@ module SocialstatsSDK
 
       def historic_stats(source_id:, **params)
         get("posts/historic_stats", params: with_post_identifier(params.merge(source_id: source_id)))
+      end
+
+      def authorized_stats(source_id:, **params)
+        query = with_post_identifier(params.merge(source_id: source_id))
+        get("posts/authorized/#{URI.encode_uri_component(source_id.to_s)}/stats", params: query)
+      end
+
+      def authorized_historic_stats(source_id:, **params)
+        query = with_post_identifier(params.merge(source_id: source_id))
+        get("posts/authorized/#{URI.encode_uri_component(source_id.to_s)}/historic_stats", params: query)
       end
 
       private

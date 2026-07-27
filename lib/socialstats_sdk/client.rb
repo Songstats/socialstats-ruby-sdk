@@ -2,7 +2,7 @@
 
 module SocialstatsSDK
   class Client
-    attr_reader :info, :creators, :posts
+    attr_reader :info, :creators, :posts, :oauth
 
     def initialize(api_key:, base_url: HTTPClient::DEFAULT_BASE_URL, timeout: HTTPClient::DEFAULT_TIMEOUT_SECONDS,
       max_retries: 2, http_adapter: nil, user_agent: nil)
@@ -18,6 +18,7 @@ module SocialstatsSDK
       @info = Resources::Info.new(@http)
       @creators = Resources::Creators.new(@http)
       @posts = Resources::Posts.new(@http)
+      @oauth = Resources::OAuth.new(@http)
     end
 
     def close
