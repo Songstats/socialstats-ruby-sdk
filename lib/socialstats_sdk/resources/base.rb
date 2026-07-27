@@ -3,6 +3,14 @@
 module SocialstatsSDK
   module Resources
     class Base
+      CREATOR_IDENTIFIER_KEYS = %i[
+        socialstats_creator_id
+        instagram_creator_id
+        facebook_creator_id
+        youtube_creator_id
+        tiktok_creator_id
+      ].freeze
+
       def initialize(http_client)
         @http = http_client
       end

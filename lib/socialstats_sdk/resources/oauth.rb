@@ -5,11 +5,12 @@ require "uri"
 module SocialstatsSDK
   module Resources
     class OAuth < Base
-      def create(socialstats_creator_id:, source_id:, **params)
-        raise ArgumentError, "socialstats_creator_id is required" if socialstats_creator_id.to_s.empty?
+      def create(source_id:, **params)
         raise ArgumentError, "source_id is required" if source_id.to_s.empty?
 
-        post("oauth", params: params.merge(socialstats_creator_id: socialstats_creator_id, source_id: source_id))
+        query = params.merge(source_id: source_id)
+        require_any_identifier!(query, CREATOR_IDENTIFIER_KEYS)
+        post("oauth", params: query)
       end
 
       def list(**params)

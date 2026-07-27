@@ -3,8 +3,6 @@
 module SocialstatsSDK
   module Resources
     class Creators < Base
-      IDENTIFIER_KEYS = %i[socialstats_creator_id].freeze
-
       def info(**params)
         get("creators/info", params: with_identifier(params))
       end
@@ -83,7 +81,7 @@ module SocialstatsSDK
 
       def with_identifier(params)
         query = params.dup
-        require_any_identifier!(query, IDENTIFIER_KEYS)
+        require_any_identifier!(query, CREATOR_IDENTIFIER_KEYS)
         query
       end
     end

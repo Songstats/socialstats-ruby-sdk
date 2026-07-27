@@ -39,6 +39,8 @@ Authentication observed in Rails: `apikey` request header.
 | POST   | `/link_request`     | `client.creators.add_link_request(link: ..., ...)`         |
 | DELETE | `/link_request`     | `client.creators.remove_link_request(link: ..., ...)`      |
 
+Creator-scoped methods require one creator identifier: `socialstats_creator_id`, `instagram_creator_id`, `facebook_creator_id`, `youtube_creator_id`, or `tiktok_creator_id`.
+
 ## `/enterprise/v1/posts`
 
 | HTTP | Route             | SDK Method                         |
@@ -47,6 +49,8 @@ Authentication observed in Rails: `apikey` request header.
 | GET  | `/historic_stats` | `client.posts.historic_stats(...)` |
 | GET  | `/authorized/:source_id/stats` | `client.posts.authorized_stats(...)` |
 | GET  | `/authorized/:source_id/historic_stats` | `client.posts.authorized_historic_stats(...)` |
+
+Post methods require one creator identifier, `source_id`, and one of `post_id`, `id_unique`, or `external_id`.
 
 ## `/enterprise/v1/oauth`
 

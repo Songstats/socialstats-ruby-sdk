@@ -5,7 +5,6 @@ require "uri"
 module SocialstatsSDK
   module Resources
     class Posts < Base
-      CREATOR_IDENTIFIER_KEYS = %i[socialstats_creator_id].freeze
       POST_IDENTIFIER_KEYS = %i[post_id id_unique external_id].freeze
 
       def stats(source_id:, **params)
