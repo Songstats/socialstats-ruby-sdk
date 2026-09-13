@@ -45,8 +45,8 @@ Creator-scoped methods require one creator identifier: `socialstats_creator_id`,
 
 | HTTP | Route             | SDK Method                         |
 | ---- | ----------------- | ---------------------------------- |
-| GET  | `/stats`          | `client.posts.stats(...)`          |
-| GET  | `/historic_stats` | `client.posts.historic_stats(...)` |
+| GET  | `/:source_id/stats`          | `client.posts.stats(...)`          |
+| GET  | `/:source_id/historic_stats` | `client.posts.historic_stats(...)` |
 | GET  | `/authorized/:source_id/stats` | `client.posts.authorized_stats(...)` |
 | GET  | `/authorized/:source_id/historic_stats` | `client.posts.authorized_historic_stats(...)` |
 
