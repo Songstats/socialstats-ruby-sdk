@@ -31,7 +31,7 @@ module SocialstatsSDK
       end
 
       def normalize_params(params)
-        return nil if params.blank?
+        return nil if params.nil? || params.empty?
 
         normalized = {}
         params.each do |key, value|
